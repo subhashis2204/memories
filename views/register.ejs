@@ -1,23 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
+<% layout('layouts/boilerplate') %>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=, initial-scale=1.0">
-  <title>Document</title>
-</head>
-
-<body>
-
-  <form action="/register" method="POST">
-    <input type="text" name="username" placeholder="username">
-    <input type="password" name="password" placeholder="password">
-    <button>Register</button>
+<div class="bg-sky-950 flex flex-col w-full min-h-screen items-center justify-center">
+  <form action="/register" method="POST" class="flex flex-col gap-4 w-3/4 max-w-[30rem] p-5 bg-white rounded-md">
+    <p class="font-bold text-center text-xl mb-2">Sign Up For An Account</p>
+    <div class="flex flex-col gap-2">
+      <label for="" class="font-bold text-md">Username</label>
+      <input type="text" name="username" id="username" class="rounded-md border-2 border-gray-200 bg-gray-100">
+    </div>
+    <div class="flex flex-col gap-2">
+      <label for="" class="font-bold text-md">Password</label>
+      <input type="password" name="password" id="password" class="rounded-md border-2 border-gray-200 bg-gray-100">
+    </div>
+    <button class="bg-blue-500 py-3 px-3 rounded-md text-white">Register</button>
   </form>
-
-  <a href="/login">Login</a>
-
-
-</body>
-
-</html>
+</div>
