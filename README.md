@@ -29,3 +29,7 @@ I learned how to utilize Google Maps to create marker clusters and how to use Mi
 We intend to improve the UI of the application and employ search feature using the generated tags.
 
 
+<img width="960" alt="Screenshot 2023-06-19 013831" src="https://github.com/subhashis2204/memories/assets/76895635/e05a57b3-c43c-4040-89af-2b0328166537">
+<img width="960" alt="Screenshot 2023-06-19 014830" src="https://github.com/subhashis2204/memories/assets/76895635/ab7d2a56-fecb-4bb3-9787-ef45467114a1">
+<img width="947" alt="Screenshot 2023-06-19 014942" src="https://github.com/subhashis2204/memories/assets/76895635/e4d12a32-595b-403b-8810-b324de8c5020">
+<img width="947" alt="Screenshot 2023-06-19 015414" src="https://github.com/subhashis2204/memories/assets/76895635/a5f15c2b-fc5a-46c6-86f4-a04c3dcf66b0">
