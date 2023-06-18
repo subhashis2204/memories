@@ -1,7 +1,15 @@
 <% layout('layouts/boilerplate') %>
 
 <div class="w-full min-h-screen p-3 flex justify-center items-center flex-col gap-4 bg-sky-950">
-  <a href="/profile" class="bg-blue-500 px-3 py-3 rounded-md text-white">Go to Profile Page</a>
+  <div class="flex items-stretch justify-center gap-4 w-3/4 max-w-[30rem]">
+    <% if(!user) { %>
+    <a href="/login" class="bg-green-600 px-3 py-2 text-md rounded-md text-white w-1/2 text-center">Login</a>
+    <% } else { %>
+    <a href="/logout" class="bg-red-500 px-3 py-2 text-md rounded-md text-white w-1/2 text-center">Logout</a>
+    <% } %>
+
+    <a href="/profile" class="bg-blue-500 px-3 py-2 text-md rounded-md text-white w-1/2 text-center">Go to Profile Page</a>
+  </div>
 
   <form action="/upload" method="POST" class="flex flex-col w-3/4 max-w-[30rem] bg-white p-5 rounded-md gap-4" enctype="multipart/form-data">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 col-span-1">

@@ -60,6 +60,12 @@ passport.deserializeUser(User.deserializeUser())
 
 app.use(flash())
 
+app.use((req, res, next) => {
+    res.locals.user = req.user
+
+    next()
+})
+
 const registerPage = (req, res) => {
     res.render('register')
 }
@@ -121,6 +127,13 @@ app.get('/login', loginUserForm)
 app.post('/login', passport.authenticate('local', { failureFlash: true, failureRedirect: '/login' }), (req, res) => {
     console.log(req.cookies.data)
     res.redirect('/')
+})
+
+app.get('/logout', (req, res) => {
+    req.logout(err => {
+        if (err) return next(err)
+        res.redirect('/')
+    })
 })
 
 const isLoggedIn = (req, res, next) => {
