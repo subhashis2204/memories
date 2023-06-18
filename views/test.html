@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Timmana&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Trocchi&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inika:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stylesheets/flash.css">
+
+    <!-- <link rel="icon" href="data:,"> -->
+    <title>Annapurna</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css" rel="stylesheet" />
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="images/favicon/site.webmanifest">
+    <link rel="mask-icon" href="images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="images/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="images/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+    <style>
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        textarea::-webkit-scrollbar {
+            display: none;
+        }
+        /* For Firefox */
+        
+        textarea {
+            scrollbar-width: none;
+        }
+        
+        .emoji-404 {
+            position: relative;
+            animation: mymove 2.5s infinite;
+        }
+        
+        @keyframes mymove {
+            33% {
+                top: 0px;
+            }
+            66% {
+                top: 10px;
+            }
+            100% {
+                top: 0px
+            }
+        }
+    </style>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <script src="https://kit.fontawesome.com/6a302bbec6.js" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    lineClamp: {
+                        7: '7',
+                        8: '8',
+                        9: '9',
+                        10: '10'
+                    },
+                    colors: {
+                        primary: {
+                            clifford: '#da373d',
+                            "50": "#eff6ff",
+                            "100": "#dbeafe",
+                            "200": "#bfdbfe",
+                            "300": "#93c5fd",
+                            "400": "#60a5fa",
+                            "500": "#3b82f6",
+                            "600": "#2563eb",
+                            "700": "#1d4ed8",
+                            "800": "#1e40af",
+                            "900": "#1e3a8a"
+                        }
+                    },
+                    fontFamily: {
+                        'timmana': [
+                            'Timmana', 'sans-serif'
+                        ],
+                        'trocchi': [
+                            'Trocchi', 'serif'
+                        ],
+                        'inika': ['Inika', 'serif'],
+                        'poppins': ['Poppins', 'sans-serif']
+                    },
+                    screens: {
+                        'sm-micro': '360px'
+                    },
+                    flexGrow: {
+                        2: '2'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <div class="p-5 w-full max-h-max flex justify-center items-center flex-col gap-4 bg-sky-950">
+        <div class="flex flex-row gap-4">
+            <a href="/profile" class="bg-blue-500 px-3 py-3 rounded-md text-white">Go to Profile Page</a>
+            <!-- <button class="bg-blue-500 text-white px-3 py-3 rounded-md" onclick="showPopup()">Sign In</button> -->
+        </div>
+
+        <form action="/upload" method="POST" class="flex flex-col w-3/4 max-w-[30rem] bg-white p-5 rounded-md gap-4" enctype="multipart/form-data">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 col-span-1">
+                <div class="flex flex-col gap-2 md:col-start-1">
+                    <label for="lat" class="text-md font-bold">Latitude</label>
+                    <input type="text" id="lat" class="rounded-md bg-gray-100 border-2 border-gray-300 focus:ring-black focus:border-black">
+                </div>
+                <div class="flex flex-col gap-2 md:col-start-2 col-span-1">
+                    <label for="lng" class="text-md font-bold">Longitude</label>
+                    <input type="text" id="lng" class="rounded-md bg-gray-100 border-2 border-gray-300 focus:ring-black focus:border-black">
+                </div>
+                <button onclick="handleClickEvent(event)" class="bg-white px-3 py-3 rounded-md text-sm font-bold border-2 border-black  md:col-start-1 md:col-span-2 hover:shadow-md">Find My Location</button>
+            </div>
+            <div class="flex flex-col gap-2">
+                <label for="" class="font-bold text-md">Enter a description</label>
+                <textarea name="desc" id="" cols="30" rows="3" class="rounded-md p-2 font-poppins"></textarea>
+            </div>
+            <div class="flex flex-col gap-2">
+                <label for="image" class="text-md font-bold">Upload Your Image</label>
+                <input type="file" name="image" id="image" class="rounded-md bg-gray-100 border-2 border-gray-200" accept="image/*">
+            </div>
+            <button class="bg-red-500 text-white py-3 px-3 rounded-md text-md font-bold  hover:shadow-lg">Submit</button>
+        </form>
+
+        <div class="bg-white p-2 max-w-[15rem] flex flex-col items-center justify-center rounded-md">
+            <img src="../images/sample.jpg" alt="" class="w-full rounded-md">
+            <div class="pt-2 w-full text-center">
+                <span>#life</span>
+                <span>#life</span>
+                <span>#life</span>
+                <span>#life</span>
+            </div>
+            <p class="mt-2 text-sm text-justify p-2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ea, ad iste sit ducimus, explicabo illo beatae ipsam eligendi asperiores odit voluptates soluta vel deleniti aliquam obcaecati incidunt quos consectetur illum!</p>
+        </div>
+    </div>
+    <script>
+        const handleCurrentPosition = (position) => {
+            console.log(position.coords)
+            const {
+                latitude,
+                longitude
+            } = position.coords
+
+            const t = document.getElementById('lat')
+            console.log(t)
+
+            document.getElementById('lat').value = latitude
+            document.getElementById('lng').value = longitude
+        }
+
+        const handlePositionError = (error) => {
+            alert('Please enable location services to use this feature')
+        }
+
+        function handleClickEvent(e) {
+            e.preventDefault();
+
+            const positionConfig = {
+                enableHighAccuracy: true,
+                timeout: 5000,
+                maximumAge: 0
+            };
+
+            navigator.geolocation.getCurrentPosition(handleCurrentPosition, handlePositionError, positionConfig);
+        }
+
+        function showPopup() {
+            document.querySelector('.overlay').style.display = 'block';
+            document.querySelector('.popup').style.display = 'block';
+        }
+
+        function hidePopup() {
+            document.querySelector('.overlay').style.display = 'none';
+            document.querySelector('.popup').style.display = 'none';
+        }
+    </script>
+
+</body>
+
+</html>

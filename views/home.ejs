@@ -1,0 +1,56 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="w-full min-h-screen p-3 flex justify-center items-center flex-col gap-4 bg-sky-950">
+  <a href="/profile" class="bg-blue-500 px-3 py-3 rounded-md text-white">Go to Profile Page</a>
+
+  <form action="/upload" method="POST" class="flex flex-col w-3/4 max-w-[30rem] bg-white p-5 rounded-md gap-4" enctype="multipart/form-data">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 col-span-1">
+      <div class="flex flex-col gap-2 md:col-start-1">
+        <label for="lat" class="text-md font-bold">Latitude</label>
+        <input type="text" id="lat" class="rounded-md bg-gray-100 border-2 border-gray-300 focus:ring-black focus:border-black" value="25.0000000" name="lat">
+      </div>
+      <div class="flex flex-col gap-2 md:col-start-2 col-span-1">
+        <label for="lng" class="text-md font-bold">Longitude</label>
+        <input type="text" id="lng" class="rounded-md bg-gray-100 border-2 border-gray-300 focus:ring-black focus:border-black" value="85.0000000" name="lng">
+      </div>
+      <button onclick="handleClickEvent(event)" class="bg-white px-3 py-3 rounded-md text-sm font-bold border-2 border-black  md:col-start-1 md:col-span-2 hover:shadow-lg">Find My Location</button>
+    </div>
+    <div class="flex flex-col gap-2">
+      <label for="" class="font-bold text-md">Enter a description</label>
+      <textarea name="desc" id="desc" cols="30" rows="3" class="rounded-md p-2 font-poppins"></textarea>
+    </div>
+    <div class="flex flex-col gap-2">
+      <label for="image" class="text-md font-bold">Upload Your Image <span style="color:red"> *</span></label>
+      <input type="file" name="image" id="image" class="rounded-md bg-gray-100 border-2 border-gray-200" accept="image/*" required>
+    </div>
+    <button class="bg-red-500 text-white py-3 px-3 rounded-md text-md font-bold hover:shadow-lg">Submit</button>
+  </form>
+</div>
+<script>
+  const handleCurrentPosition = (position) => {
+    console.log(position.coords)
+    const {
+      latitude,
+      longitude
+    } = position.coords
+
+    document.getElementById('lat').value = latitude
+    document.getElementById('lng').value = longitude
+  }
+
+  const handlePositionError = (error) => {
+    alert('Please enable location services to use this feature')
+  }
+
+  function handleClickEvent(e) {
+    e.preventDefault();
+
+    const positionConfig = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0
+    };
+
+    navigator.geolocation.getCurrentPosition(handleCurrentPosition, handlePositionError, positionConfig);
+  }
+</script>
